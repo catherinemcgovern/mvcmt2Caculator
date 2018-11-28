@@ -1,0 +1,23 @@
+@model MathOperation
+
+<!--this is sending values from the controller to view must bind text fields to the model -->
+
+<form asp-controller="MathController" asp-action="DoCalculation" method="POST">
+<!--THis is borrowed from https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit-->
+
+<BR><BR>Please Enter a Value<br>
+  <input type="text" asp-for="@Model.LeftOperand">
+  <br>
+<BR>
+Please Enter another Value<br>
+ <input type="text" asp-for="@Model.RightOperand">
+ <br>
+<strong>Please Select a Calculation option</strong>
+  <br><br>LENGTH<br>
+  <input type="checkbox" value="add" asp-for="@Model.Operator">add<br>
+  <input type="checkbox" value="subtract" asp-for="@Model.Operator">subtract<br>
+
+
+  <input type="submit" value="Submit">
+
+</form>
