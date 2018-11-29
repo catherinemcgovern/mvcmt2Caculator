@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Do Some Calculating... ";
+}
+
+
+@model MT2MathCaculator.Models.MathOperation
+
+<!--this is sending values from the controller to view must bind text fields to the model -->
+<H1> CACLULATOR</H1>
+<form asp-controller="MathController" asp-action="DoCalculation" method="POST">
+<!--THis is borrowed from https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit-->
+<fieldset>
+<BR><BR>Please Enter a Value<br>
+  <input type="text" asp-for="@Model.LeftOperand">
+  <br>
+<BR>
+Please Enter another Value<br>
+ <input type="text" asp-for="@Model.RightOperand">
+ <br>
+
+<strong>Please Select a Calculation option</strong>
+<br>
+<input type="text" asp-for="@Model.Operator">
+<br><br>
+
+  <input type="submit" value="Submit">
+</fieldset>
+</form>

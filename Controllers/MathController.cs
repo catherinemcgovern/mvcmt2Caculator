@@ -11,37 +11,65 @@ namespace MT2MathCaculator.Controllers
 {
     public class MathController : Controller
     {
+
+
+                public IActionResult Calculator (MathOperation model)
+                    {
+                        return View(model);
+
+                    }
+
+        public IActionResult Index()
+        {
+            string message = "this is the message";
+            ViewData["Message"] = message;
+            return View();
+        }
+
         [HttpPost]
         public IActionResult DoCalculation (MathOperation model)
         {
 
-             if (model.Operator == "add")
-      {
-            {MyMathRoutines.Subtract(left, right)}"
-            //model.LeftOperand + model.RightOperand =;
-            return View(model);
-      }
-        
+           
+            if (model.Operator == "+")
+            {
+                MyMathRoutines.Add(model.LeftOperand, model.RightOperand);
+                return View(model);
+            }
+            else if (model.Operator == "-")
+            {
+                MyMathRoutines.Subtract(model.LeftOperand, model.RightOperand);
+                return View(model);
+            }
 
-        
-        else 
-        {
-            Console.WriteLine("Invalid Option");
-            return View(model);
-            
+            else if (model.Operator == "*")
+            {
+                MyMathRoutines.Multiply(model.LeftOperand, model.RightOperand);
+                return View(model);
+            }
+
+            else if (model.Operator == "/")
+            {
+                MyMathRoutines.Divide(model.LeftOperand, model.RightOperand);
+                return View(model);
+            }
+                        
+            else 
+            {
+                Console.WriteLine("Invalid Option");
+                return View(model);
+                
+            }
         }
+    }
+}
+
+
 /*  public decimal LeftOperand {get; set; }
         public string RightOperand {get; set; }
         public decimal Operator {get; set; }
         public decimal Result {get; set; } */
 
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
 /*
             ViewData["LeftOperand"] = left;
             ViewData["RightOperand"] = right;
@@ -75,5 +103,3 @@ namespace MT2MathCaculator.Controllers
             return View(model);
             
         } */
-    }
-}

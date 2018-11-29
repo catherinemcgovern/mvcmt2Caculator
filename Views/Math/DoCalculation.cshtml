@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Results";
+}
+@model MT2MathCaculator.Models.MathOperation
+
+<h1>Results</h1>
+
+<p>
+
+   Here is the Calculation you did:  <br>
+   @Model.LeftOperand
+    <br> @Model.Operator 
+     <br>@Model.RightOperand </strong>  <br>
+   The answer is @Model.Result
+    <br>
+
+    <a href="/Calculation/Calculator">I want to do some more calculations ... now</a>
+</p>
